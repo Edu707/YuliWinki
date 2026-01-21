@@ -1,0 +1,258 @@
+body {
+    background: linear-gradient(to bottom, #fde2e2, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden;
+}
+
+.card-container {
+    background: rgba(255,253,245,0.9);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+    z-index: 10;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media(min-width:768px){
+    .main-content{flex-direction:row;}
+}
+
+.text-area {
+    flex:1;
+    color:#5c4033;
+}
+
+h2 {
+    font-family:'Dancing Script';
+    color:#d63384;
+}
+
+.signature {
+    font-family:'Dancing Script';
+    color:#d63384;
+    text-align:right;
+}
+
+.tree-area {
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#treeCanvas {
+    width:100%;
+    max-width:360px;
+}
+
+.timer-area {
+    margin-top:20px;
+    text-align:center;
+    border-top:2px solid #5c4033;
+    padding-top:10px;
+}
+
+#timer span {
+    font-size:1.6rem;
+    color:#d63384;
+}
+
+/* PÉTALOS */
+#petals-container {
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+}
+
+.petal {
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:#ffb6c1;
+    border-radius:50%;
+    animation:fall linear infinite;
+}
+
+@keyframes fall {
+    from { transform:translateY(-10vh); opacity:1;}
+    to { transform:translateY(110vh); opacity:0;}
+}
+
+/* --- GIF --- */
+.gif-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.gif-container img {
+    max-width: 100%;
+    width: 240px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== CARRUSEL ===== */
+.carousel {
+    position: relative;
+    margin-top: 20px;
+    width: 260px;
+    height: 260px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+.carousel-item {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+/* ===== IMAGEN SOBRE EL CORAZÓN ===== */
+.heart-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+}
+
+#heartImage {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    width: 160px;           /* ajustable */
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 15px;
+    opacity: 0;
+    animation: floatHeart 4s ease-in-out infinite;
+    transition: opacity 1.5s ease;
+}
+
+/* flotación suave */
+@keyframes floatHeart {
+    0%   { transform: translate(-50%, -50%) scale(1); }
+    50%  { transform: translate(-50%, -55%) scale(1.05); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Botón de música pequeño al lado del temporizador */
+.small-audio-btn {
+    margin-left: 8px;       /* separación con los números */
+    font-size: 16px;        /* tamaño del emoji */
+    padding: 4px 8px;       /* tamaño del botón */
+    border-radius: 6px;
+    border: none;
+    background-color: #d63384;
+    color: white;
+    cursor: pointer;
+    vertical-align: middle; /* para que quede alineado con el texto */
+}
+
+.small-audio-btn:hover {
+    background-color: #b52b70;
+}
+
+/* ===================== MODO MÓVIL ===================== */
+@media (max-width: 768px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .card-container {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    /* Todo en columna */
+    .main-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* TEXTO */
+    h2 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    #typewriter-text {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .signature {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* CANVAS Y CORAZÓN */
+    .tree-area {
+        order: -1; /* corazón arriba */
+    }
+
+    #treeCanvas {
+        max-width: 280px;
+    }
+
+    #heartImage {
+        width: 110px;
+        top: 42%;
+        left: 54%;
+    }
+
+    /* CARRUSEL */
+    .carousel {
+        margin: 10px auto;
+        max-width: 240px;
+    }
+
+    .carousel-item {
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+    /* TEMPORIZADOR */
+    .timer-area {
+        font-size: 0.95rem;
+        margin-top: 15px;
+    }
+
+    #timer span {
+        font-size: 1.2rem;
+    }
+
+    /* BOTÓN DE MÚSICA */
+    .music-control {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    #audioBtn {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+}

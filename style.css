@@ -1,11 +1,14 @@
+/* ===================== BASE ===================== */
 body {
     background: linear-gradient(to bottom, #fde2e2, #fad0c4);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;     /* CLAVE para scroll */
     min-height: 100vh;
     font-family: 'Nunito', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;          /* evita scroll lateral */
+    overflow-y: auto;            /* permite deslizar */
+    padding: 10px 0;
 }
 
 .card-container {
@@ -13,7 +16,7 @@ body {
     padding: 30px;
     border-radius: 20px;
     max-width: 900px;
-    width: 90%;
+    width: 100%;
     z-index: 10;
 }
 
@@ -23,77 +26,131 @@ body {
     gap: 20px;
 }
 
-@media(min-width:768px){
-    .main-content{flex-direction:row;}
+@media (min-width: 768px) {
+    .main-content {
+        flex-direction: row;
+    }
 }
 
+/* ===================== TEXTO ===================== */
 .text-area {
-    flex:1;
-    color:#5c4033;
+    flex: 1;
+    color: #5c4033;
 }
 
 h2 {
-    font-family:'Dancing Script';
-    color:#d63384;
+    font-family: 'Dancing Script';
+    color: #d63384;
 }
 
 .signature {
-    font-family:'Dancing Script';
-    color:#d63384;
-    text-align:right;
+    font-family: 'Dancing Script';
+    color: #d63384;
+    text-align: right;
 }
 
+/* ===================== ÁRBOL / CORAZÓN ===================== */
 .tree-area {
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #treeCanvas {
-    width:100%;
-    max-width:360px;
+    width: 100%;
+    max-width: 360px;
 }
 
+/* Imagen sobre el corazón */
+#heartImage {
+    position: absolute;
+    top: 10%;              /* SUBE la imagen por encima del corazón */
+    left: 52%;             /* un poco a la derecha */
+    width: 190px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    border-radius: 15px;
+    opacity: 0;
+    animation: floatHeart 4s ease-in-out infinite;
+    transition: opacity 1.5s ease;
+}
+
+
+@keyframes floatHeart {
+    0%   { transform: translate(-50%, -60%) scale(1); }
+    50%  { transform: translate(-50%, -65%) scale(1.05); }
+    100% { transform: translate(-50%, -60%) scale(1); }
+}
+
+/* ===================== TEMPORIZADOR ===================== */
 .timer-area {
-    margin-top:20px;
-    text-align:center;
-    border-top:2px solid #5c4033;
-    padding-top:10px;
+    margin-top: 20px;
+    text-align: center;
+    border-top: 2px solid #5c4033;
+    padding-top: 10px;
+    flex-shrink: 0;
 }
 
 #timer span {
-    font-size:1.6rem;
-    color:#d63384;
+    font-size: 1.6rem;
+    color: #d63384;
 }
 
-/* PÉTALOS */
+/* Botón de música pequeño */
+.small-audio-btn {
+    margin-left: 8px;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: none;
+    background-color: #d63384;
+    color: white;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.small-audio-btn:hover {
+    background-color: #b52b70;
+}
+
+/* ===================== PÉTALOS ===================== */
 #petals-container {
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:1;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .petal {
-    position:absolute;
-    width:8px;
-    height:8px;
-    background:#ffb6c1;
-    border-radius:50%;
-    animation:fall linear infinite;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ffb6c1;
+    border-radius: 50%;
+    animation: fall linear infinite;
 }
 
 @keyframes fall {
-    from { transform:translateY(-10vh); opacity:1;}
-    to { transform:translateY(110vh); opacity:0;}
+    from { transform: translateY(-10vh); opacity: 1; }
+    to   { transform: translateY(110vh); opacity: 0; }
 }
 
-/* --- GIF --- */
+/* ===================== GIF ===================== */
 .gif-container {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .gif-container img {
@@ -103,17 +160,16 @@ h2 {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* ===== CARRUSEL ===== */
+/* ===================== CARRUSEL ===================== */
 .carousel {
     position: relative;
-    margin-top: 20px;
+    margin: 20px auto;
     width: 260px;
     height: 260px;
-    margin-left: auto;
-    margin-right: auto;
     overflow: hidden;
     border-radius: 18px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    flex-shrink: 0;
 }
 
 .carousel-item {
@@ -130,69 +186,18 @@ h2 {
     opacity: 1;
 }
 
-/* ===== IMAGEN SOBRE EL CORAZÓN ===== */
-.heart-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 360px;
-}
-
-#heartImage {
-    position: absolute;
-    top: 12%;
-    left: 50%;
-    width: 160px;           /* ajustable */
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    border-radius: 15px;
-    opacity: 0;
-    animation: floatHeart 4s ease-in-out infinite;
-    transition: opacity 1.5s ease;
-}
-
-/* flotación suave */
-@keyframes floatHeart {
-    0%   { transform: translate(-50%, -50%) scale(1); }
-    50%  { transform: translate(-50%, -55%) scale(1.05); }
-    100% { transform: translate(-50%, -50%) scale(1); }
-}
-
-/* Botón de música pequeño al lado del temporizador */
-.small-audio-btn {
-    margin-left: 8px;       /* separación con los números */
-    font-size: 16px;        /* tamaño del emoji */
-    padding: 4px 8px;       /* tamaño del botón */
-    border-radius: 6px;
-    border: none;
-    background-color: #d63384;
-    color: white;
-    cursor: pointer;
-    vertical-align: middle; /* para que quede alineado con el texto */
-}
-
-.small-audio-btn:hover {
-    background-color: #b52b70;
-}
-
 /* ===================== MODO MÓVIL ===================== */
 @media (max-width: 768px) {
-
-    body {
-        padding: 10px;
-    }
 
     .card-container {
         padding: 18px;
         border-radius: 16px;
     }
 
-    /* Todo en columna */
     .main-content {
-        flex-direction: column;
         gap: 15px;
     }
 
-    /* TEXTO */
     h2 {
         font-size: 1.6rem;
         text-align: center;
@@ -208,33 +213,29 @@ h2 {
         margin-top: 10px;
     }
 
-    /* CANVAS Y CORAZÓN */
+    /* Corazón arriba */
     .tree-area {
-        order: -1; /* corazón arriba */
+        order: -1;
+        margin-bottom: 30px;
+    }
+
+    .heart-wrapper {
+        min-height: 300px; /* reserva espacio real */
     }
 
     #treeCanvas {
-        max-width: 280px;
+        max-width: 260px;
     }
 
     #heartImage {
         width: 110px;
-        top: 42%;
-        left: 54%;
     }
 
-    /* CARRUSEL */
     .carousel {
-        margin: 10px auto;
         max-width: 240px;
+        height: 240px;
     }
 
-    .carousel-item {
-        max-width: 100%;
-        border-radius: 12px;
-    }
-
-    /* TEMPORIZADOR */
     .timer-area {
         font-size: 0.95rem;
         margin-top: 15px;
@@ -242,17 +243,5 @@ h2 {
 
     #timer span {
         font-size: 1.2rem;
-    }
-
-    /* BOTÓN DE MÚSICA */
-    .music-control {
-        right: 15px;
-        bottom: 15px;
-    }
-
-    #audioBtn {
-        width: 38px;
-        height: 38px;
-        font-size: 16px;
     }
 }

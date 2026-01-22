@@ -3,11 +3,11 @@ body {
     background: linear-gradient(to bottom, #fde2e2, #fad0c4);
     display: flex;
     justify-content: center;
-    align-items: flex-start;     /* CLAVE para scroll */
+    align-items: flex-start;     /* CLAVE scroll */
     min-height: 100vh;
     font-family: 'Nunito', sans-serif;
-    overflow-x: hidden;          /* evita scroll lateral */
-    overflow-y: auto;            /* permite deslizar */
+    overflow-x: hidden;          /* NO scroll lateral */
+    overflow-y: auto;            /*  deslizar */
     padding: 10px 0;
 }
 
@@ -71,10 +71,10 @@ h2 {
     max-width: 360px;
 }
 
-/* Imagen sobre el corazón */
+/* OSO sobre el corazón */
 #heartImage {
     position: absolute;
-    top: 10%;              /* SUBE la imagen por encima del corazón */
+    top: 10%;              /* POSICION */
     left: 52%;             /* un poco a la derecha */
     width: 190px;
     transform: translateX(-50%);
@@ -106,7 +106,7 @@ h2 {
     color: #d63384;
 }
 
-/* Botón de música pequeño */
+/* Botón de música */
 .small-audio-btn {
     margin-left: 8px;
     font-size: 16px;
@@ -245,3 +245,4 @@ h2 {
         font-size: 1.2rem;
     }
 }
+

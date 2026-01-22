@@ -1,6 +1,6 @@
 // ================= TEXTO QUE SE ESCRIBE =================
 const messageText =
-"Mi Amor TE AMO de una manera tan bonita que a veces siento que las palabras no alcanzan para expresarlo. Mi mayor deseo es que sientas por mí aunque sea un poquito de lo que yo siento por ti, porque eres mi lugar seguro, mi alegría y mi amor más grande.";
+"Mi Amor TE AMO de una manera tan bonita que a veces siento que las palabras no alcanzan para expresarlo. Tú mi amor eres la única estrella que brilla para mi, la que llego sin aviso y se quedo en mi corazón....TE AMO MI VIDA.";
 
 let textIndex = 0;
 const textEl = document.getElementById("typewriter-text");
@@ -184,6 +184,7 @@ window.addEventListener("load", () => {
         }
     });
 });
+
 
 
 

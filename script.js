@@ -1,4 +1,4 @@
-// ================= TEXTO QUE SE ESCRIBE =================
+// ================= TEXTO  =================
 const messageText =
 "Mi Amor TE AMO de una manera tan bonita que a veces siento que las palabras no alcanzan para expresarlo. Tú mi amor eres la única estrella que brilla para mi, la que llego sin aviso y se quedo en mi corazón....TE AMO MI VIDA.";
 
@@ -8,7 +8,7 @@ const textEl = document.getElementById("typewriter-text");
 function typeWriter() {
     if (textIndex < messageText.length) {
         textEl.innerHTML += messageText.charAt(textIndex++);
-        setTimeout(typeWriter, 460); // ⏳ MUCHO MÁS LENTO
+        setTimeout(typeWriter, 600);
     }
 }
 
@@ -86,7 +86,7 @@ function animate() {
         const pulse = 1 + Math.sin(Date.now() / 1100) * 0.025;
         drawHeart(heartScale * pulse);
 
-        // ================= IMAGEN SOBRE EL CORAZÓN =================
+        // ================= OSO SOBRE EL CORAZÓN =================
         const heartImg = document.getElementById("heartImage");
         if (heartScale > 5) {
             heartImg.style.opacity = 1;
@@ -163,12 +163,12 @@ function showNextSlide() {
 
 setInterval(showNextSlide, 4000);
 
-// ================= BOTÓN PARA INICIAR MÚSICA =================
+// ================= BOTÓN  =================
 window.addEventListener("load", () => {
     const audioBtn = document.getElementById("audioBtn");
     const audio = document.getElementById("loveAudio");
 
-    // Ajustamos el volumen
+    // VOLUMEN 
     audio.volume = 0.3;
 
     audioBtn.addEventListener("click", () => {
@@ -184,6 +184,7 @@ window.addEventListener("load", () => {
         }
     });
 });
+
 
 
 
